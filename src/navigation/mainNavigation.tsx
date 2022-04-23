@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import auth from '@react-native-firebase/auth';
 import Appstack from "./appstack";
-import AuthStack from "./authstack";
+// import AuthStack from "./authstack";
 
 const MainNav: FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -19,7 +19,8 @@ const MainNav: FC = () => {
   }, [])
   return (
     <NavigationContainer>
-      {user !== null ? <Appstack /> : <AuthStack />}
+      <Appstack />
+      {/* {user !== null ? <Appstack /> : <AuthStack />} */}
     </NavigationContainer>
   )
 }
