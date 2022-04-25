@@ -13,10 +13,13 @@ const App: FC = ({ route }) => {
   return (
     console.log(name),
     <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Image source={reference} style={{ height: 150, width: 150 }} />
-        <Text style={{ color: 'white', fontSize: 30 }}>
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: '50%' }}>
+        <Image source={reference} style={{ height: 150, width: 150, borderRadius: 10 }} />
+        <Text style={{ color: 'white', fontSize: 40, fontFamily: 'Poppins-SemiBold', marginTop: 50 }}>
           {name}
+        </Text>
+        <Text style={{ fontSize: 20, fontFamily: 'Poppins-Light', color: 'white' }}>
+          is the recommended crop
         </Text>
       </View>
     </ImageBackground>

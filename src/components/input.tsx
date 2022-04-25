@@ -13,7 +13,7 @@ const Input: FC<Props> = (props) => {
   return (
     <View style={styles.container}>
 
-      <TextInput placeholder={props.ph} onChangeText={props.oct} secureTextEntry={props.secureTextEntry || false} placeholderTextColor={props.textcolor} />
+      <TextInput placeholder={props.ph} onChangeText={props.oct} secureTextEntry={props.secureTextEntry || false} placeholderTextColor={props.textcolor} color={props.textcolor} />
     </View>
   )
 }

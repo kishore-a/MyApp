@@ -7,10 +7,11 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const App: FC = () => {
   const image = { uri: "https://images.pexels.com/photos/1687341/pexels-photo-1687341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
-  const [K, setK] = useState(null)
+  const [K, setK] = useState<any>(null)
   const [N, setN] = useState(null)
   const [P, setP] = useState(null)
   const [ph, setph] = useState(null)
+  const [plant, setplant] = useState(null)
   function onResult(QuerySnapshot) {
     console.log('Got Users collection result.');
     const data = QuerySnapshot["_data"]
@@ -18,13 +19,13 @@ const App: FC = () => {
     setP(data["P"])
     setN(data["N"])
     setph(data["Ph"])
-    console.log(K)
+    setplant(data["Plant"])
 
   }
   function onError(error) {
     console.error(error);
   }
-  // firestore().collection('Users').doc('sensor reading').onSnapshot(onResult, onError);
+  firestore().collection('Users').doc('sensor reading').onSnapshot(onResult, onError);
   return (
     <ImageBackground source={image} resizeMode='cover' style={{ flex: 1 }}>
       <View style={{ alignItems: 'center' }}>
@@ -67,12 +68,15 @@ const App: FC = () => {
         </View>
       </View>
       <View style={{ alignItems: 'center', marginTop: 50 }}>
-        <TouchableOpacity style={{ width: width - 50, height: 60, backgroundColor: '#005555', borderRadius: 20, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ color: 'white', fontFamily: 'Poppins-SemiBold', fontSize: 20 }}>
-            Find Suitable Plant
+        <View style={{ width: width - 50, height: 120, backgroundColor: '#005555', borderRadius: 20, alignItems: 'center', }}>
+          <Text style={{ color: 'white', fontFamily: 'Poppins-Regular', fontSize: 20 }}>
+            Suitable Plant is
+          </Text>
+          <Text style={{ fontSize: 35, fontFamily: 'Poppins-ExtraBold', color: 'white', textTransform: 'capitalize' }}>
+            {plant}
           </Text>
 
-        </TouchableOpacity>
+        </View>
       </View>
 
 

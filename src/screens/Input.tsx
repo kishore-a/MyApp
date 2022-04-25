@@ -6,15 +6,16 @@ const width = Dimensions.get('window').width;
 const App: FC = (props) => {
   const navigation = useNavigation()
   const image = { uri: "https://images.pexels.com/photos/1687341/pexels-photo-1687341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
-  const [K, setK] = useState(0)
-  const [N, setN] = useState(0)
-  const [P, setP] = useState(0)
-  const [ph, setph] = useState(0)
+  const [K, setK] = useState<number>(0)
+  const [N, setN] = useState<number>(0)
+  const [P, setP] = useState<number>(0)
+  const [ph, setph] = useState<number>(0)
+
   function plantdecider() {
     if (ph > 12) {
       const plant = "Grapes"
       console.log("Grapes")
-      props.navigation.navigate('Results', { plant: plant })
+      props.navigation.navigate('Results', { plant: plant, token: "b9791214-e8a3-4d83-887e-fde74b773529" })
     }
     else if (ph > 10) {
       const plant = "Rice"
@@ -26,7 +27,7 @@ const App: FC = (props) => {
     else if (ph < 2) {
       const plant = "Coconut"
       console.log("Coconut")
-      props.navigation.navigate('Results', { plant: plant })
+      props.navigation.navigate('Results', { plant: plant, token: "8a4fc4f5-7bfc-48ee-aea6-85aabf62e3e5" })
 
     }
     else if (ph < 5) {
@@ -68,13 +69,13 @@ const App: FC = (props) => {
         <View style={{ flexDirection: 'row', }} >
           <View style={{ marginTop: '10%', height: 210, width: width - 250, backgroundColor: '#005555', alignItems: 'center', borderRadius: 15, justifyContent: 'center' }}>
             <Text style={{ fontSize: 16, fontFamily: 'Poppins-Bold', color: 'white' }}>Potassium value</Text>
-            <TextInput style={{ height: 160, width: width - 275, backgroundColor: 'white', fontSize: 50, fontFamily: 'Poppins-Light', borderRadius: 15 }} placeholderTextColor="black" onChangeText={setK} color="black" keyboardType={"number-pad"} textAlign={'center'} />
+            <TextInput style={{ height: 160, width: width - 275, backgroundColor: 'white', fontSize: 50, fontFamily: 'Poppins-Light', borderRadius: 15 }} placeholderTextColor="black" onChangeText={(text) => setK(text)} keyboardType={"number-pad"} textAlign={'center'} color="black" />
 
           </View>
 
           <View style={{ marginTop: '10%', marginLeft: 50, height: 210, width: width - 250, backgroundColor: '#005555', alignItems: 'center', borderRadius: 15, justifyContent: 'center' }}>
             <Text style={{ fontSize: 16, fontFamily: 'Poppins-Bold', color: 'white' }}>Nitrogen value</Text>
-            <TextInput style={{ height: 160, width: width - 275, backgroundColor: 'white', fontSize: 50, fontFamily: 'Poppins-Light', borderRadius: 15 }} placeholderTextColor="black" onChangeText={setN} color="black" keyboardType={"number-pad"} textAlign={'center'} placeholderText="K" />
+            <TextInput style={{ height: 160, width: width - 275, backgroundColor: 'white', fontSize: 50, fontFamily: 'Poppins-Light', borderRadius: 15 }} placeholderTextColor="black" onChangeText={(text) => setN(text)} color="black" keyboardType={"number-pad"} textAlign={'center'} placeholderText="K" />
 
           </View>
 
